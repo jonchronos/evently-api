@@ -1,4 +1,5 @@
 import { Response, Request } from 'express'
+import bcryptjs from 'bcryptjs'
 import User from '../models/user'
 
 
@@ -15,7 +16,6 @@ export const getUsers = async (_: Request, res: Response) => {
 }
 //Get a user by ID
 export const getUser = (_: Request, res: Response) => {
-    // res.send('Hola desde typescript')
     res.json({
         msg: 'hola'
     })
@@ -27,10 +27,12 @@ export const createUser = async (req: Request, res: Response) => {
     const user = await User.create({
         full_name,
         email,
-        password
+        // bcryptjs hash user password
+        password: await bcryptjs.hash(password, 10)
     })
 
     res.json({
+        msg: 'User created',
         user
     })
 }
