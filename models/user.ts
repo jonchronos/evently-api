@@ -3,6 +3,15 @@ import db from '../database/connection'
 
 
 const User = db.define('User', {
+    pk: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    id: {
+        type: DataTypes.UUID,
+        defaultValue: DataTypes.UUIDV4
+    },
     full_name: {
         type: DataTypes.STRING
     },
@@ -13,11 +22,17 @@ const User = db.define('User', {
         type: DataTypes.STRING
     },
     status: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: true
     },
     google: {
-        type: DataTypes.BOOLEAN
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
-})
+},
+    {
+        timestamps: false
+    }
+)
 
 export default User
