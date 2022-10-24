@@ -1,6 +1,8 @@
 import express, { Application } from 'express'
 import cors from 'cors'
-import userRouter from '../routes/users'
+import usersRouter from '../routes/users'
+import ticketsRouter from '../routes/tickets'
+import authRouter from '../routes/auth'
 import database from '../database/connection'
 
 
@@ -9,6 +11,8 @@ class Server {
     private app: Application
     private port: String
     private path = {
+        auth: '/api/v1/auth',
+        tickets: '/api/v1/tickets',
         users: '/api/v1/users'
     }
 
@@ -45,7 +49,9 @@ class Server {
     }
 
     routes() {
-        this.app.use(this.path.users, userRouter)
+        this.app.use(this.path.auth, authRouter)
+        this.app.use(this.path.tickets, ticketsRouter)
+        this.app.use(this.path.users, usersRouter)
     }
 
     listen() {
