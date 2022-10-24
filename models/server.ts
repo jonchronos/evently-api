@@ -26,7 +26,7 @@ class Server {
 
     async connectDB() {
         try {
-            await database.authenticate()
+            await database.sync({ force: true })
             console.log('Database connected')
         } catch (e) {
             let mess = e
