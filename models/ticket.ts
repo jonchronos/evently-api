@@ -1,6 +1,6 @@
 import { DataTypes } from 'sequelize'
 import db from '../database/connection'
-import Event from '../models/events'
+
 
 
 const Ticket = db.define('Ticket', {
@@ -33,15 +33,15 @@ const Ticket = db.define('Ticket', {
         type: DataTypes.BOOLEAN,
         defaultValue: true
     },
+    event_id: {
+        type: DataTypes.INTEGER,
+        defaultValue: 1
+    }
 },
     {
         timestamps: false
     }
-)
 
-//Associations
-//User has many Bookings
-Ticket.hasOne(Event, { foreignKey: 'event_id', as: 'event' });
-Event.belongsTo(Ticket, { foreignKey: 'event_id', as: 'ticket' });
+)
 
 export default Ticket
