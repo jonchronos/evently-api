@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { getTickets } from '../controllers/tickets'
+import { createTicket, getTickets } from '../controllers/tickets'
 
 
 
@@ -7,6 +7,7 @@ const router = Router()
 
 
 router.get('/', getTickets)
+router.post('/', createTicket)
 
 
 
