@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import db from '../database/connection'
+import Ticket from './ticket';
 
 
 const Event = db.define('Event', {
@@ -26,6 +27,7 @@ const Event = db.define('Event', {
     },
     time: {
         type: DataTypes.TIME,
+        defaultValue: '20:30:00'
     },
     location: {
         type: DataTypes.STRING,
@@ -48,5 +50,10 @@ const Event = db.define('Event', {
         timestamps: false
     }
 )
+
+//Associations
+//User has many Bookings
+Event.hasMany(Ticket, { foreignKey: 'event_id', as: 'ticket' });
+Ticket.belongsTo(Event, { foreignKey: 'event_id', as: 'event' });
 
 export default Event
