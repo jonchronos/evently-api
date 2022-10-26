@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize'
 import db from '../database/connection'
+import Booking from './booking';
 
 
 const User = db.define('User', {
@@ -34,5 +35,10 @@ const User = db.define('User', {
         timestamps: false
     }
 )
+
+//Associations
+//User has many Bookings
+User.hasMany(Booking, { foreignKey: 'user_id', as: 'tickets' });
+Booking.belongsTo(User, { foreignKey: 'user_id', as: 'user' });
 
 export default User
