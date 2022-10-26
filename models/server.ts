@@ -3,6 +3,8 @@ import cors from 'cors'
 import usersRouter from '../routes/users'
 import ticketsRouter from '../routes/tickets'
 import authRouter from '../routes/auth'
+import eventsRouter from '../routes/events'
+import bookingsRouter from '../routes/bookings'
 import database from '../database/connection'
 
 
@@ -12,6 +14,8 @@ class Server {
     private port: String
     private path = {
         auth: '/api/v1/auth',
+        bookings: '/api/v1/bookings',
+        events: '/api/v1/events',
         tickets: '/api/v1/tickets',
         users: '/api/v1/users'
     }
@@ -50,6 +54,8 @@ class Server {
 
     routes() {
         this.app.use(this.path.auth, authRouter)
+        this.app.use(this.path.bookings, bookingsRouter)
+        this.app.use(this.path.events, eventsRouter)
         this.app.use(this.path.tickets, ticketsRouter)
         this.app.use(this.path.users, usersRouter)
     }
