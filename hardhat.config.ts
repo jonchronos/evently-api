@@ -3,12 +3,11 @@
 */
 const dotend = require('dotenv')
 dotend.config()
-import { HardhatUserConfig } from "hardhat/config";
 import "@nomiclabs/hardhat-ethers";
 
 const { API_URL, PRIVATE_KEY } = process.env;
 
-const config: HardhatUserConfig = {
+const config = {
   solidity: "0.8.4",
   defaultNetwork: "mumbai",
   networks: {

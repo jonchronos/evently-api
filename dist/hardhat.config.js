@@ -5,7 +5,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 */
 const dotend = require('dotenv');
 dotend.config();
-// import "@nomicfoundation/hardhat-toolbox";
 require("@nomiclabs/hardhat-ethers");
 const { API_URL, PRIVATE_KEY } = process.env;
 const config = {
