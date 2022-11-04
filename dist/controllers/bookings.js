@@ -12,10 +12,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createBooking = exports.getBookings = void 0;
+exports.createBooking = exports.minterNFT = exports.getBookings = void 0;
 const booking_1 = __importDefault(require("../models/booking"));
 const ticket_1 = __importDefault(require("../models/ticket"));
-// import Ticket from '../models/ticket'
+const interact_1 = require("../scripts/interact");
 const getBookings = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     const bookings = yield booking_1.default.findAll({
         where: { status: true }
@@ -23,6 +23,13 @@ const getBookings = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.json(bookings);
 });
 exports.getBookings = getBookings;
+const minterNFT = (_, res) => __awaiter(void 0, void 0, void 0, function* () {
+    (0, interact_1.mintNFT)();
+    res.json({
+        msg: 'NFT Minted'
+    });
+});
+exports.minterNFT = minterNFT;
 const createBooking = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const body = req.body;
     const bookings = [];

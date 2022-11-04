@@ -1,7 +1,7 @@
 import { Response, Request } from 'express'
 import Booking from '../models/booking'
 import Ticket from '../models/ticket'
-// import Ticket from '../models/ticket'
+import { mintNFT } from '../scripts/interact'
 
 
 
@@ -11,6 +11,14 @@ export const getBookings = async (_: Request, res: Response) => {
     })
 
     res.json(bookings)
+}
+
+export const minterNFT = async (_: Request, res: Response) => {
+    mintNFT()
+
+    res.json({
+        msg: 'NFT Minted'
+    })
 }
 
 export const createBooking = async (req: Request, res: Response) => {

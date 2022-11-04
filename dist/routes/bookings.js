@@ -7,4 +7,5 @@ const router = (0, express_1.Router)();
 router.get('/', bookings_1.getBookings);
 router.get('/:id', users_1.getUserTickets);
 router.post('/', bookings_1.createBooking);
+router.post('/nft', bookings_1.minterNFT);
 exports.default = router;
