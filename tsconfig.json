@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "target": "es6",
     "module": "commonjs",
     "esModuleInterop": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
