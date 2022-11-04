@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "module": "commonjs",
+    "target": "es5",
+    "noImplicitAny": false,
+    "sourceMap": true,
     "esModuleInterop": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
