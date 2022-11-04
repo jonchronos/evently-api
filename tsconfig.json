@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "es2015",
     "esModuleInterop": true,
     /* Visit https://aka.ms/tsconfig to read more about this file */
     /* Projects */
